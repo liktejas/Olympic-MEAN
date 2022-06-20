@@ -1,0 +1,52 @@
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Add Player <a routerLink="">Home</a></h1>
+    </div>
+    <div *ngIf="saveDataFailed == true" class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Failed to Add Player</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+    <div *ngIf="saveDataSuccess == true" class="alert alert-success alert-dismissible fade show" role="alert"><strong>Player Added Successfully</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+    <form [formGroup]="updatePlayerForm" (ngSubmit)="updatePlayer()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <input type="hidden" formControlName="player_id">
+                    <label for="ranking" class="form-label">Ranking {{id}}</label>
+                    <input type="number" class="form-control" id="ranking" placeholder="Ranking" formControlName="ranking" required autocomplete="off" autofocus>
+                    <p class="text-danger" *ngIf="ranking && ranking.invalid && ranking.touched">Ranking is invalid.</p>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name" required autocomplete="off">
+                    <p class="text-danger" *ngIf="name && name.invalid && name.touched">Name is invalid.</p>
+                </div>
+                <div class="mb-3">
+                    <label for="dob" class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" id="dob" formControlName="dob" required autocomplete="off">
+                    <p class="text-danger" *ngIf="dob && dob.invalid && dob.touched">Ranking is invalid.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" class="form-control" id="country" placeholder="Country" formControlName="country" required autocomplete="off">
+                    <p class="text-danger" *ngIf="country && country.invalid && country.touched">Ranking is invalid.</p>
+                </div>
+                <div class="mb-3">
+                    <label for="score" class="form-label">Score</label>
+                    <input type="number" class="form-control" id="score" placeholder="Score" formControlName="score" required autocomplete="off">
+                    <p class="text-danger" *ngIf="score && score.invalid && score.touched">Ranking is invalid.</p>
+                </div>
+                <div class="mb-3">
+                    <label for="event" class="form-label">Event</label>
+                    <input type="text" class="form-control" id="event" placeholder="Event" formControlName="event" autocomplete="off">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button [disabled]="updatePlayerForm.invalid" type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-warning" (click)="getComponentName.emit('content')">Go Back</button>
+            </div>
+        </div>
+    </form>
+  </main>
+  

@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+  
+  <div class="container-fluid">
+    <div class="row">
+
+      <app-sidebar></app-sidebar>
+      <div [ngSwitch]="component">
+        <app-content *ngSwitchCase="'content'" (getComponentName)="getComponent($event)"></app-content>
+        <app-addplayer *ngSwitchCase="'addPlayer'" (getComponentName)="getComponent($event)"></app-addplayer>
+        <app-updateplayer [id]="playerID" *ngSwitchCase="'updatePlayer'" (getComponentName)="getComponent($event)"></app-updateplayer>
+      </div>
+
+    </div>
+  </div>
+
+<app-footer></app-footer>

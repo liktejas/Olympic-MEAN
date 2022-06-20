@@ -1,0 +1,19 @@
+<div class="text-center">
+  <main class="form-signin">
+    <div *ngIf="login == false" class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Login Failed!</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" autocomplete="off" formControlName="email" required/>
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" formControlName="password" required/>
+        <label for="floatingPassword">Password</label>
+      </div>
+      <p class="text-danger" *ngIf="email && email.invalid && email.touched">Email is invalid.</p>
+      <p class="text-danger" *ngIf="password && password.invalid && password.touched">Password must be atleast 6 characters.</p>
+      <button [disabled]="loginForm.invalid" class="w-100 btn btn-lg btn-primary">Sign in</button>
+    </form>
+  </main>
+</div>
